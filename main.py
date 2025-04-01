@@ -52,6 +52,8 @@ if __name__ == '__main__':
         user_quantity = len(configs)
         user_quantity = user_quantity // 2
         print(f'config：{config}')
+        print(f'SCKEY：{SCKEY}')
+        print(f'url：{url}')
         for i in range(user_quantity):
                 user = configs[i*2]
                 pwd = configs[i*2+1]
