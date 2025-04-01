@@ -26,9 +26,15 @@ def sign(order,user,pwd):
                 print(f'===账号{order}进行登录...===')
                 print(f'账号：{user}')
                 response = json.loads(session.post(url=login_url,headers=header,data=data).text)
+                # 指定响应编码
+                response.encoding = response.apparent_encoding
+                response = json.loads(response.text)
                 print(response['msg'])
                 # 进行签到
                 result = json.loads(session.post(url=check_url,headers=header).text)
+                # 指定响应编码
+                result.encoding = result.apparent_encoding
+                result = json.loads(result.text)
                 print(result['msg'])
                 content = result['msg']
                 # 进行推送
