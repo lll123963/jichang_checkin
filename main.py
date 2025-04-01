@@ -26,9 +26,9 @@ def sign(order,user,pwd):
                 print(f'===账号{order}进行登录...===')
                 print(f'账号：{user}')
                 response = json.loads(session.post(url=login_url,headers=header,data=data).text)
-                # 指定响应编码
-                response.encoding = response.apparent_encoding
-                response = json.loads(response.text)
+                # 这里强制解码为 utf-8
+                response_text = response['msg'].encode('utf-8').decode('utf-8')
+                print(response_text)
                 print(response['msg'])
                 # 进行签到
                 result = json.loads(session.post(url=check_url,headers=header).text)
